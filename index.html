@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crunchy Bananas 🍌</title>
+  <meta name="description" content="Experiments in humans + AI collaboration. Tools, games, and creative projects built together.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍌</text></svg>">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --border: #2a2a3a;
+      --text: #e4e4e7;
+      --text-muted: #71717a;
+      --accent: #f59e0b;
+      --accent-hover: #fbbf24;
+      --purple: #a855f7;
+      --blue: #3b82f6;
+      --green: #22c55e;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .logo {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, var(--accent), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .tagline {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .experiment-note {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      text-align: left;
+    }
+
+    .experiment-note h2 {
+      font-size: 1rem;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .experiment-note p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .cards {
+      display: grid;
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease;
+      display: block;
+    }
+
+    .card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(245, 158, 11, 0.1);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .card-icon {
+      font-size: 2rem;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .card-description {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .card-tags {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      background: rgba(168, 85, 247, 0.1);
+      color: var(--purple);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+    }
+
+    .tag.games { background: rgba(59, 130, 246, 0.1); color: var(--blue); }
+    .tag.tools { background: rgba(34, 197, 94, 0.1); color: var(--green); }
+    .tag.creative { background: rgba(245, 158, 11, 0.1); color: var(--accent); }
+
+    .links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .links a:hover {
+      color: var(--accent);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .support-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, var(--accent), #ea580c);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 1rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .support-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(245, 158, 11, 0.3);
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2rem; }
+      .tagline { font-size: 1rem; }
+      .container { padding: 2rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">🍌</div>
+      <h1>Crunchy Bananas</h1>
+      <p class="tagline">Experiments in humans + AI building things together</p>
+    </header>
+
+    <div class="experiment-note">
+      <h2>🧪 What is this?</h2>
+      <p>
+        We're exploring what happens when humans and AI agents collaborate on real projects. 
+        Not just prompting—actually working together. The code, the decisions, the bugs, the fixes. 
+        Everything here is built through that collaboration. Some of it works great. Some of it... well, 
+        that's part of the experiment.
+      </p>
+    </div>
+
+    <div class="cards">
+      <a href="https://crunchybananas.github.io/shipyard-microtools/" class="card">
+        <div class="card-header">
+          <span class="card-icon">⚓</span>
+          <span class="card-title">Shipyard Microtools</span>
+        </div>
+        <p class="card-description">
+          A collection of browser-based tools, games, and experiments. Developer utilities, 
+          creative apps, and games—all built with vanilla JS and Ember.
+        </p>
+        <div class="card-tags">
+          <span class="tag tools">Developer Tools</span>
+          <span class="tag games">Games</span>
+          <span class="tag creative">Creative</span>
+        </div>
+      </a>
+
+      <a href="https://crunchybananas.com" class="card">
+        <div class="card-header">
+          <span class="card-icon">🏠</span>
+          <span class="card-title">Crunchy Bananas</span>
+        </div>
+        <p class="card-description">
+          Our main site. Learn more about what we do and the team behind the experiments.
+        </p>
+      </a>
+
+      <a href="https://shipyard.bot" class="card">
+        <div class="card-header">
+          <span class="card-icon">🚢</span>
+          <span class="card-title">Shipyard</span>
+        </div>
+        <p class="card-description">
+          The platform that inspired many of these tools. Ship projects, earn reputation, 
+          and connect with other builders.
+        </p>
+      </a>
+    </div>
+
+    <div class="links">
+      <a href="https://github.com/crunchybananas">GitHub</a>
+      <a href="https://crunchybananas.com/donate">Support Our Work</a>
+    </div>
+
+    <footer>
+      <p>Built by humans + AI 🤝</p>
+      <a href="https://github.com/sponsors/crunchybananas" class="support-btn">
+        ❤️ Sponsor on GitHub
+      </a>
+    </footer>
+  </div>
+</body>
+</html>
