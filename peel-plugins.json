@@ -1,0 +1,18 @@
+{
+  "_comment": "Peel plugin registry. See https://github.com/cloke/peel/blob/main/Docs/PLUGINS/SPEC_v1.md for the format. Clients fetch this URL via PluginRegistry.fetchRegistry() and install signed plugins through plugins.install.signed({id}).",
+
+  "version": 1,
+  "updated": "2026-04-19T20:00:00Z",
+
+  "entries": [],
+
+  "publishers": {
+    "crunchybananas": {
+      "name": "crunchybananas",
+      "contact": "https://github.com/crunchybananas",
+      "keys": {
+        "ed25519": []
+      }
+    }
+  }
+}
