@@ -1,0 +1,69 @@
+{
+  "spec": 1,
+  "id": "commit-craft",
+  "name": "Commit Craft",
+  "version": "0.1.0",
+  "description": "Generate a commit message from staged changes, style-matched to the repo's recent commit history.",
+  "author": "crunchybananas",
+  "license": "MIT",
+  "entrypoint": "run",
+  "eager": false,
+  "idleTimeoutSeconds": 300,
+  "requiredOllamaModels": [
+    "qwen2.5-coder:7b",
+    "qwen2.5:7b",
+    "llama3.1:8b"
+  ],
+  "requiredMinMemoryGB": 16,
+  "permissions": {
+    "filesystem": {
+      "read": [
+        "<plugin>/**"
+      ],
+      "write": []
+    },
+    "network": [
+      "localhost:11434"
+    ],
+    "peelMCP": [
+      "git.diff",
+      "git.log",
+      "git.status"
+    ],
+    "env": [
+      "OLLAMA_HOST",
+      "PEEL_MCP_URL"
+    ]
+  },
+  "tools": [
+    {
+      "name": "craft",
+      "description": "Draft a commit message for the currently staged changes, matching the repo's recent commit voice (length, prefixes, mood, body conventions).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "repoPath": {
+            "type": "string",
+            "description": "Absolute path to git repo. Required."
+          },
+          "includeBody": {
+            "type": "boolean",
+            "default": false,
+            "description": "If true, also draft a 2-3 sentence body explaining the why."
+          },
+          "model": {
+            "type": "string",
+            "description": "Override the Ollama model. Defaults to first available of qwen2.5-coder:7b, qwen2.5:7b, llama3.1:8b."
+          }
+        },
+        "required": [
+          "repoPath"
+        ]
+      }
+    }
+  ],
+  "signature": {
+    "publisherKey": "Ub58z/Vg0+c4Mx5AvyuB6z8+vY7nsyKl5K+hXqveYH8=",
+    "signature": "MZ0bNt3ZJC/Ya3RQZvLBYWMI1IkG3iJqIPoiP3FSpO7h+DyQ40aweKH/8T7FRAQEi6KY+QlXPssdTfgT5YnaBw=="
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "spec": 1,
+  "id": "secret-scan",
+  "name": "Secret Scan",
+  "version": "0.1.0",
+  "description": "Scan a directory tree for committed secrets using regex patterns + Shannon entropy. Zero network, zero LLM, zero callbacks \u2014 pure local pattern matching.",
+  "author": "crunchybananas",
+  "license": "MIT",
+  "entrypoint": "run",
+  "eager": false,
+  "idleTimeoutSeconds": 300,
+  "permissions": {
+    "filesystem": {
+      "read": [
+        "$CWD/**"
+      ],
+      "write": [
+        "<plugin>/.cache/**"
+      ]
+    },
+    "network": [],
+    "peelMCP": [],
+    "env": []
+  },
+  "tools": [
+    {
+      "name": "scan",
+      "description": "Walk a directory tree and flag likely committed secrets \u2014 API keys, tokens, private keys, AWS credentials, JWTs \u2014 using regex + Shannon entropy. Returns findings with redacted previews and confidence scores.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Absolute path to scan. Required."
+          },
+          "includeGitignored": {
+            "type": "boolean",
+            "default": false,
+            "description": "If false (default), respect a .gitignore at the path root and skip ignored files."
+          },
+          "minEntropy": {
+            "type": "number",
+            "default": 4.5,
+            "description": "Shannon entropy threshold for high-entropy random-string detection. Lower = more findings + more noise."
+          },
+          "patterns": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Optional extra regex patterns to apply on top of the built-in set. Each is evaluated per-line."
+          }
+        },
+        "required": [
+          "path"
+        ]
+      }
+    }
+  ],
+  "signature": {
+    "publisherKey": "Ub58z/Vg0+c4Mx5AvyuB6z8+vY7nsyKl5K+hXqveYH8=",
+    "signature": "SoMcvcY5NPJYF5dFioYQ+zEgBSnFXvh7XyNi8IiazIUGnq0uOCZ4P33wnco0fJz4Y04KGne+MeEK9zmw6h2aDA=="
+  }
+}
