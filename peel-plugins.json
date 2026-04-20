@@ -11,9 +11,9 @@
       "publisher": "crunchybananas",
       "publisherKeyEd25519": "Ub58z/Vg0+c4Mx5AvyuB6z8+vY7nsyKl5K+hXqveYH8=",
       "manifestURL": "https://crunchybananas.github.io/plugins/commit-craft/0.1.0/plugin.json",
-      "manifestSha256": "abb31cb7334a6f6f4259c50dc6e5c490a198af95c548111fd6a7e6798bc4c486",
+      "manifestSha256": "750ce32b2126c6a42022050aae08e6ac54464298e3595b9822c6aff3aa899438",
       "tarballURL": "https://crunchybananas.github.io/plugins/commit-craft/0.1.0/commit-craft-0.1.0.tar.gz",
-      "tarballSha256": "e875d4f2c3d9f144006c72a83a752029c689d22fb29973879a2b08009b0e2ae0"
+      "tarballSha256": "243b6b87b1205699f864a4d301062626b823343b279a84d97f8749ee563bb76f"
     },
     {
       "id": "secret-scan",
@@ -21,9 +21,9 @@
       "publisher": "crunchybananas",
       "publisherKeyEd25519": "Ub58z/Vg0+c4Mx5AvyuB6z8+vY7nsyKl5K+hXqveYH8=",
       "manifestURL": "https://crunchybananas.github.io/plugins/secret-scan/0.1.0/plugin.json",
-      "manifestSha256": "0f8726bfa8a31436842a5ed752475ad3866d2895835b9d4ee8b878ee550a35a2",
+      "manifestSha256": "90267fee57e4dc33652921a0490583ad57c926df0282de39d2dafea881a43a99",
       "tarballURL": "https://crunchybananas.github.io/plugins/secret-scan/0.1.0/secret-scan-0.1.0.tar.gz",
-      "tarballSha256": "06c7caa63ba3d55fe378d1b28d763f6311c143068d9d31f08ffe48a5de0621e3"
+      "tarballSha256": "bd296aa01842a63331b680f6c60964fd3f90b8202c835ff6890869ae71d12030"
     }
   ],
 
